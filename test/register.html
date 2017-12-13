@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <link rel="bookmark" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+
+<body>
+    <div class="layout">
+        <header class="bdf3 header">
+            <span class="goback"><</span>
+            <h2 class="head-tit">手机号注册</h2>
+
+        </header>
+        <img class="r-logo" src="../img/registerlogo.png">
+        <div class="pad-box mb30">
+            <input id="tel" type="tel" class="reg-input pct100" placeholder="请输入手机号" />
+        </div>
+
+        <div class="pad-box mb30">
+            <input type="number" id="number" class="reg-input pct70" placeholder="请输入短信验证码" />
+            <input type="button" id="getCode" class="fr get-code" value=" 获取验证码">
+        </div>
+        <div class="pad-box mb30">
+            <input type="password" id="psw" class="reg-input pct100" placeholder="请输入密码" />
+        </div>
+        <div class="pad-box mb30">
+            <input type="button" id="subment" class="reg-input pct100 reg-btn" value="注册" />
+        </div>
+    </div>
+
+    <script src="../js/jquery2.js"></script>
+    <script src="../js/rem.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/apiLink.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/login/register.js"></script>
+
+
+    <script type="text/javascript">
+        
+        var domain = "http://localhost/mshop/index.php?";
+        $(document).ready(function(){
+
+            $("#getCode").onClick(function () {
+                alert("Hello World");
+                var mobile = $("#tel").val();
+                var url = domain + "op=index&ac=getCode&";
+                var param = "mobile=" + mobile;
+                $.get(url + param,function(data,status)
+                {
+                   aert(data);
+                   var code = Json.vv(data);
+                   $("#getCode").val(code);
+
+                });
+            });
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
